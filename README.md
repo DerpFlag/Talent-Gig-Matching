@@ -3,8 +3,8 @@ title: Talent-Gig Matcher
 emoji: briefcase
 colorFrom: blue
 colorTo: indigo
-sdk: streamlit
-app_file: src/ui/product_app.py
+sdk: docker
+app_port: 7860
 pinned: false
 license: mit
 ---
@@ -13,7 +13,7 @@ license: mit
 
 Production-style local-first project to match candidate resumes to gig/job descriptions using NLP, embeddings, vector retrieval, and reranking.
 
-**Hugging Face Space:** connect this GitHub repository in the Space settings (Create Space → Import from GitHub) so the `app_file` above is used. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+**Hugging Face Space:** Streamlit is **not** a separate SDK on Spaces anymore. This repo uses **`sdk: docker`** and the root **`Dockerfile`** runs the Streamlit product app on port **7860**. On [Create new Space](https://huggingface.co/new-space) choose **Docker** (not Gradio), then import [the GitHub repo](https://github.com/DerpFlag/Talent-Gig-Matching). See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Phases
 - Phase 1: Problem framing and system design
@@ -74,13 +74,14 @@ Response JSON:
 - Local UI: Streamlit
 - Cloud API option: Render/Railway (Docker or Python web service)
 - Cloud UI option: Streamlit Community Cloud
-- Docker Compose local stack: `docker compose up --build`
+- Docker Compose local stack: `docker compose up --build` (API/UI images use `Dockerfile.api`; HF Space uses root `Dockerfile` + port 7860)
 
 ## Quality Gates
 - Run tests: `python -m pytest -q`
 - CI workflow: `.github/workflows/ci.yml`
-- Docker image build:
-  - `docker build -t talentgig-matcher .`
+- Docker image builds:
+  - Streamlit (HF / product UI): `docker build -t talentgig-ui-space .`
+  - API (local compose): `docker build -f Dockerfile.api -t talentgig-api .`
 
 ## Portfolio Artifacts
 - Model card: `docs/MODEL_CARD.md`

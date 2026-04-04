@@ -9,9 +9,9 @@
 
 Use private repos if résumés or configs must not be public.
 
-## Hugging Face Spaces (free Streamlit demo)
+## Hugging Face Spaces (free demo via Docker)
 
-[Spaces](https://huggingface.co/docs/hub/spaces) can run a **Streamlit** app on a **free CPU** machine with **ephemeral disk**.
+[Spaces](https://huggingface.co/docs/hub/spaces) can run a **Docker** app on a **free CPU** machine with **ephemeral disk**. **Streamlit is no longer a first-class Space SDK** ([configuration](https://huggingface.co/docs/hub/main/spaces-config-reference) only lists `gradio`, `docker`, and `static`). This repository runs **Streamlit inside Docker** on port **7860**, matching HF’s default `app_port`.
 
 **Fit for:** demos, portfolios, internal prototypes.
 
@@ -20,19 +20,20 @@ Use private repos if résumés or configs must not be public.
 ### Steps (recommended: GitHub as source of truth)
 
 1. Push this repository to GitHub (e.g. [DerpFlag/Talent-Gig-Matching](https://github.com/DerpFlag/Talent-Gig-Matching)).
-2. On Hugging Face: **Create new Space** → SDK **Streamlit** → under **Duplicate / import**, choose **Import from GitHub** and select the repo and branch `main`.
-3. The Space reads **`README.md` YAML** at the top of this repo (`app_file: src/ui/product_app.py`). No extra “App file” typing is needed if import worked.
-4. In the Space **Settings → Repository secrets**, add `HF_TOKEN` only if you must download gated models (default MiniLM is public).
-5. **Cold start:** first model download can take several minutes on free CPU.
-6. **Chroma + `best_model.pt`:** a new Space has an empty `data/artifacts/`. Use **PDF ingest** in the app to build vectors for uploaded résumés. **Match** still needs a trained reranker at `data/artifacts/model/best_model.pt` — train locally, then attach persistent storage or document that buyers run training in their own environment (free Space resets disk when it sleeps).
+2. On Hugging Face: **Create new Space** → SDK **Docker** (you will **not** see “Streamlit” as its own card—that is expected).
+3. Import **from GitHub** and select this repo and branch `main`.
+4. The Space reads **`README.md` YAML** at the top (`sdk: docker`, `app_port: 7860`) and builds the root **`Dockerfile`**, which starts `streamlit run src/ui/product_app.py`.
+5. In the Space **Settings → Repository secrets**, add `HF_TOKEN` only if you must download gated models (default MiniLM is public).
+6. **Cold start:** first model download can take several minutes on free CPU.
+7. **Chroma + `best_model.pt`:** a new Space has an empty `data/artifacts/`. Use **PDF ingest** in the app to build vectors for uploaded résumés. **Match** still needs a trained reranker at `data/artifacts/model/best_model.pt` — train locally, then attach persistent storage or document that buyers run training in their own environment (free Space resets disk when it sleeps).
 
 **CLI helper (optional):** with `HF_TOKEN` set, run `pip install huggingface_hub` then `python scripts/hf_create_space.py` to create an empty Space under your HF user, then connect the GitHub repo in Space settings.
 
-### Why Streamlit on Spaces (vs API + separate frontend here)
+### Why Docker on Spaces (vs API + separate frontend here)
 
-One **Streamlit** app on a free Space is the standard low‑friction demo: a single build, no CORS, no second host. The **FastAPI** service remains in the repo for later (Docker, Railway, internal tools); running API + SPA as two free tiers is more moving parts for the same portfolio goal.
+One **container** on a free Space is the standard approach after HF’s Streamlit SDK removal: the **Dockerfile** runs Streamlit on **7860**. The **FastAPI** image is still available as **`Dockerfile.api`** (see `docker-compose.yml`) for local or paid hosts.
 
-Example README header for a Space (adjust names as needed):
+Example README header for a Docker Space (this repo matches this pattern):
 
 ```yaml
 ---
@@ -40,9 +41,8 @@ title: Talent-Gig Matcher
 emoji: briefcase
 colorFrom: blue
 colorTo: indigo
-sdk: streamlit
-sdk_version: 1.31.0
-app_file: src/ui/product_app.py
+sdk: docker
+app_port: 7860
 pinned: false
 ---
 ```

@@ -30,7 +30,7 @@ def main() -> None:
         sys.exit(1)
     username = str(me["name"])
     repo_id = f"{username}/talent-gig-matching"
-    api.create_repo(repo_id, repo_type="space", space_sdk="streamlit", exist_ok=True)
+    api.create_repo(repo_id, repo_type="space", space_sdk="docker", exist_ok=True)
     print(f"Space ready: https://huggingface.co/spaces/{repo_id}")
     print(
         "Next: Space Settings → Git repository → "
