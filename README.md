@@ -1,6 +1,6 @@
 ---
 title: Talent-Gig Matcher
-emoji: briefcase
+emoji: 💼
 colorFrom: blue
 colorTo: indigo
 sdk: docker

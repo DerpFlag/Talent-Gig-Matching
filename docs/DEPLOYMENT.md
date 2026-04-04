@@ -38,7 +38,7 @@ Example README header for a Docker Space (this repo matches this pattern):
 ```yaml
 ---
 title: Talent-Gig Matcher
-emoji: briefcase
+emoji: 💼
 colorFrom: blue
 colorTo: indigo
 sdk: docker
