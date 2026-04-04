@@ -1,0 +1,6 @@
+raw_resumes_path: data/raw/resumes.csv
+raw_jobs_path: data/raw/jobs.csv
+processed_resumes_path: data/processed/resumes_processed.csv
+processed_jobs_path: data/processed/jobs_processed.csv
+labels_path: data/labels/job_resume_pairs.csv
+chroma_dir: data/artifacts/chroma

@@ -1,0 +1,16 @@
+.git
+.cursor
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.venv
+venv
+data/raw
+data/interim
+data/processed
+data/labels
+data/artifacts
+notebooks
+apis.txt

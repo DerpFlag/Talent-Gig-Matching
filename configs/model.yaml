@@ -1,0 +1,11 @@
+embedding_model_name: sentence-transformers/all-MiniLM-L6-v2
+batch_size: 8
+max_length: 64
+epochs: 1
+learning_rate_encoder: 2e-5
+learning_rate_head: 1e-4
+weight_decay: 0.01
+validation_size: 0.2
+random_seed: 42
+positive_class_weight: 1.0
+model_output_path: data/artifacts/model/best_model.pt

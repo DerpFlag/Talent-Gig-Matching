@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: talentgig-api
+    command: python scripts/run_api.py
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  ui:
+    build: .
+    container_name: talentgig-ui
+    command: python scripts/run_ui.py
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    volumes:
+      - ./:/app
+    environment:
+      - PYTHONUNBUFFERED=1
