@@ -16,3 +16,4 @@ pytest
 requests
 pypdf
 python-multipart
+huggingface_hub
