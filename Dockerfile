@@ -15,6 +15,7 @@ COPY --chown=user . .
 
 USER user
 ENV HOME=/home/user \
+    PYTHONPATH=/home/user/app \
     PYTHONUNBUFFERED=1 \
     STREAMLIT_BROWSER_GATHER_USAGE_STATS=false \
     OMP_NUM_THREADS=1 \
