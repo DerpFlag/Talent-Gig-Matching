@@ -8,16 +8,19 @@ RUN useradd -m -u 1000 user
 
 WORKDIR /home/user/app
 
-COPY --chown=user requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY --chown=user requirements-space.txt .
+RUN pip install --no-cache-dir -r requirements-space.txt
 
 COPY --chown=user . .
 
 USER user
 ENV HOME=/home/user \
     PYTHONUNBUFFERED=1 \
-    STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+    STREAMLIT_BROWSER_GATHER_USAGE_STATS=false \
+    OMP_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1 \
+    TOKENIZERS_PARALLELISM=false
 
 EXPOSE 7860
 
-CMD ["streamlit", "run", "src/ui/product_app.py", "--server.port", "7860", "--server.address", "0.0.0.0", "--server.headless", "true", "--browser.gatherUsageStats", "false"]
+CMD ["streamlit", "run", "src/ui/product_app.py", "--server.port", "7860", "--server.address", "0.0.0.0", "--server.headless", "true", "--browser.gatherUsageStats", "false", "--server.fileWatcherType", "none"]

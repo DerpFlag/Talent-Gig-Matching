@@ -5,6 +5,7 @@ colorFrom: blue
 colorTo: indigo
 sdk: docker
 app_port: 7860
+startup_duration_timeout: 60m
 pinned: false
 license: mit
 ---

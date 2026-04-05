@@ -11,9 +11,6 @@ import uuid
 
 import streamlit as st
 
-from src.data.pdf_extract import extract_text_from_pdf
-from src.embeddings.ingest import ingest_resume_entries
-from src.rag.pipeline import recommend_candidates
 from src.ui.guide_loader import GUIDE_PATH, PROJECT_ROOT, load_guide_sections
 from src.ui.pipeline_runner import LESSONS, run_script
 
@@ -53,6 +50,8 @@ def _hero() -> None:
 
 
 def tab_match() -> None:
+    from src.rag.pipeline import recommend_candidates
+
     st.subheader("Match candidates to a job")
     st.markdown(
         '<p class="tg-muted">Uses your Chroma index + trained reranker when present. '
@@ -92,6 +91,9 @@ def tab_match() -> None:
 
 
 def tab_ingest_pdf() -> None:
+    from src.data.pdf_extract import extract_text_from_pdf
+    from src.embeddings.ingest import ingest_resume_entries
+
     st.subheader("Add résumés from PDF")
     st.markdown(
         '<p class="tg-muted">Text is extracted in-process (no OCR for scanned pages). '
@@ -195,7 +197,7 @@ def tab_advanced() -> None:
 def main() -> None:
     st.set_page_config(
         page_title="Talent–Gig Matcher",
-        page_icon="briefcase",
+        page_icon="💼",
         layout="wide",
         initial_sidebar_state="expanded",
     )
@@ -210,6 +212,18 @@ def main() -> None:
             "- **Advanced** — full offline pipeline scripts.\n"
         )
         st.markdown("---")
+        page = st.radio(
+            "Current view",
+            [
+                "How it works",
+                "Match",
+                "PDF ingest",
+                "Advanced pipeline",
+            ],
+            index=0,
+            help="Only this view runs heavy ML code. Tabs would load everything at once and can crash small Spaces.",
+        )
+        st.markdown("---")
         st.markdown(f"**Project:** `{PROJECT_ROOT}`")
         st.markdown(f"**Guide file:** `{GUIDE_PATH}`")
         st.markdown(
@@ -218,14 +232,13 @@ def main() -> None:
             "See `docs/DEPLOYMENT.md` for limits."
         )
 
-    tabs = st.tabs(["Match", "PDF ingest", "How it works", "Advanced pipeline"])
-    with tabs[0]:
-        tab_match()
-    with tabs[1]:
-        tab_ingest_pdf()
-    with tabs[2]:
+    if page == "How it works":
         tab_how_it_works()
-    with tabs[3]:
+    elif page == "Match":
+        tab_match()
+    elif page == "PDF ingest":
+        tab_ingest_pdf()
+    else:
         tab_advanced()
 
 

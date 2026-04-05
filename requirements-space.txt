@@ -1,0 +1,15 @@
+# Slimmer deps for Hugging Face Docker Space (Streamlit product UI only).
+numpy
+pandas
+scikit-learn
+pyyaml
+tqdm
+python-dotenv
+sentence-transformers
+transformers
+torch
+chromadb
+streamlit
+requests
+pypdf
+huggingface_hub
