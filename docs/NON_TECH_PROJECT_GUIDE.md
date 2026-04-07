@@ -517,7 +517,7 @@ Example command usage:
 
 - **Python**: the language for all data and ML stages.
 - **Transformers/SentenceTransformers**: understand text meaning and create embeddings.
-- **PyTorch**: train the ranking model (this project uses PyTorch, not TensorFlow/Keras).
+- **PyTorch**: train the ranking model.
 - **ChromaDB**: store and search embeddings quickly.
 - **FastAPI**: expose model as API endpoint.
 - **Streamlit**: easy web demo for non-technical users.

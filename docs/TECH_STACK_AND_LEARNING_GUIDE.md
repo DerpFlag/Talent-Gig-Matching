@@ -28,8 +28,6 @@ Your two goals:
 | **transformers (Hugging Face)** | Library providing pretrained **AutoModel**, **AutoTokenizer**, schedulers | Encoder backbone + tokenizer for the Siamese network; `get_linear_schedule_with_warmup` in training | “We fine-tune or head-train on top of a pretrained encoder; tokenizer handles subword boundaries.” |
 | **sentence-transformers** | Higher-level API for sentence embedding models | Encode résumés and jobs into vectors for similarity / Chroma indexing and weak supervision signals | “Sentence embeddings for dense retrieval vs sparse BM25; normalize embeddings for cosine/IP distance.” |
 
-**TensorFlow / Keras:** not used in this repository.
-
 ---
 
 ## Retrieval, “RAG-style” flow, and storage
@@ -118,8 +116,8 @@ Your two goals:
 
 ## How to talk about this in interviews
 
-- **“Why PyTorch and not TensorFlow?”**  
-  This project chose PyTorch + Hugging Face because the ecosystem for **pretrained encoders** and **fine-tuning** is dominant in research and many product teams; either framework is defensible if you know one well.
+- **“Why PyTorch + Hugging Face here?”**  
+  Strong ecosystem for **pretrained encoders** and **fine-tuning** sentence models; fits this pipeline end-to-end.
 
 - **“Is this real RAG?”**  
   You have **retrieval** + **downstream scoring** + **explainability**. Classic RAG adds a **generator** (LLM). You can say: “RAG-style retrieval-first design; reranker instead of LLM for deterministic, cheaper inference in this MVP.”

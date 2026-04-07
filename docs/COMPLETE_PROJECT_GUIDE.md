@@ -20,7 +20,7 @@
 10. [Evaluation metrics](#10-evaluation-metrics)  
 11. [API, UI, scripts](#11-api-ui-scripts)  
 12. [Deployment and production notes](#12-deployment-and-production-notes)  
-13. [Stack: PyTorch vs TensorFlow](#13-stack-pytorch-vs-tensorflow)  
+13. [Stack and main libraries](#13-stack-and-main-libraries)  
 14. [Other documents in `docs/`](#other-documents-in-docs)  
 
 ---
@@ -31,8 +31,6 @@ An end-to-end **talent ↔ gig matching** system:
 
 - **Offline:** Clean résumés/jobs → build **weak-supervised** (job, résumé) pairs → embed résumés into **ChromaDB** → **train** a **Siamese-style matcher** in **PyTorch** (encoder from **Hugging Face Transformers**).  
 - **Online:** Embed the job text → **retrieve** top‑k résumés from Chroma → **rerank** with the trained matcher → **explain** overlap using a simple skill dictionary.
-
-There is **no TensorFlow/Keras** in this repository.
 
 ---
 
@@ -252,15 +250,13 @@ Use metrics to compare **retrieval-only** vs **retrieval + rerank** on held-out 
 
 ---
 
-## 13. Stack: PyTorch vs TensorFlow
+## 13. Stack and main libraries
 
 - **PyTorch:** training loop, `SiameseMatcher`, checkpointing.  
 - **Hugging Face `transformers`:** `AutoModel`, `AutoTokenizer`, LR scheduler.  
 - **`sentence-transformers`:** offline embeddings for Chroma and weak-supervision similarity matrix (and same model name as encoder backbone).  
 - **ChromaDB:** vector index.  
 - **FastAPI / Streamlit / Docker / pytest / GitHub Actions:** product and engineering hygiene.  
-
-**TensorFlow/Keras:** not used.
 
 **Interview cheat line:** *“Weak labels from embedding + skill heuristics; dual-tower Siamese with pairwise fusion; BCE-with-logits; retrieve with Chroma then rerank with the fine-tuned encoder.”*
 

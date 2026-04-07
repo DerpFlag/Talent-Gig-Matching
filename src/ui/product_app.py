@@ -147,8 +147,7 @@ def tab_ingest_pdf() -> None:
 def tab_complete_walkthrough() -> None:
     st.subheader("Complete walkthrough — single source of truth")
     st.caption(
-        "Data → weak labels → Chroma → training (PyTorch / Hugging Face) → retrieve → rerank → explain. "
-        "No TensorFlow/Keras."
+        "Data → weak labels → Chroma → training (PyTorch / Hugging Face) → retrieve → rerank → explain."
     )
     if not COMPLETE_GUIDE_PATH.exists():
         st.error(f"Missing `{COMPLETE_GUIDE_PATH}`.")
