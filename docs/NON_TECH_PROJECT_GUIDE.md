@@ -1,5 +1,10 @@
 # Talent-Gig Matching System: Complete Non-Technical Master Guide
 
+> **Technical single source of truth** (what the model is, what it trained on, every parameter): **[`COMPLETE_PROJECT_GUIDE.md`](COMPLETE_PROJECT_GUIDE.md)**.  
+> **This** file is the long **non-technical** story for buyers and stakeholders.
+
+---
+
 This document is written for a non-technical audience.
 It explains, in detail:
 - what we built,

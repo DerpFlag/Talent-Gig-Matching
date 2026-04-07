@@ -1,5 +1,7 @@
 # Experiment Report Template
 
+> Fill this when you run formal experiments. **Full pipeline and hyperparameters:** [`COMPLETE_PROJECT_GUIDE.md`](COMPLETE_PROJECT_GUIDE.md).
+
 ## Run Metadata
 - Date:
 - Commit:

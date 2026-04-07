@@ -19,7 +19,7 @@ import streamlit as st
 
 from src.ui.guide_loader import GUIDE_PATH, PROJECT_ROOT, load_guide_sections
 
-STACK_GUIDE_PATH = PROJECT_ROOT / "docs" / "TECH_STACK_AND_LEARNING_GUIDE.md"
+COMPLETE_GUIDE_PATH = PROJECT_ROOT / "docs" / "COMPLETE_PROJECT_GUIDE.md"
 from src.ui.pipeline_runner import LESSONS, run_script
 
 _CSS = """
@@ -144,16 +144,16 @@ def tab_ingest_pdf() -> None:
         )
 
 
-def tab_tech_stack_interviews() -> None:
-    st.subheader("Tech stack & interview map")
+def tab_complete_walkthrough() -> None:
+    st.subheader("Complete walkthrough — single source of truth")
     st.caption(
-        "PyTorch + Hugging Face Transformers / Sentence-Transformers + vector retrieval. "
-        "No TensorFlow/Keras in this repo."
+        "Data → weak labels → Chroma → training (PyTorch / Hugging Face) → retrieve → rerank → explain. "
+        "No TensorFlow/Keras."
     )
-    if not STACK_GUIDE_PATH.exists():
-        st.error(f"Missing `{STACK_GUIDE_PATH}`.")
+    if not COMPLETE_GUIDE_PATH.exists():
+        st.error(f"Missing `{COMPLETE_GUIDE_PATH}`.")
         return
-    st.markdown(STACK_GUIDE_PATH.read_text(encoding="utf-8"))
+    st.markdown(COMPLETE_GUIDE_PATH.read_text(encoding="utf-8"))
 
 
 def tab_how_it_works() -> None:
@@ -229,7 +229,7 @@ def main() -> None:
             "- **Match** — JD in, ranked résumés out.\n"
             "- **PDF ingest** — add candidates to the vector index.\n"
             "- **How it works** — buyer-friendly documentation.\n"
-            "- **Tech stack & interviews** — libraries, roles, `requirements.txt` map.\n"
+            "- **Complete walkthrough** — one doc: model, data, training, deploy map.\n"
             "- **Advanced** — full offline pipeline scripts.\n"
         )
         st.markdown("---")
@@ -237,7 +237,7 @@ def main() -> None:
             "Current view",
             [
                 "How it works",
-                "Tech stack & interviews",
+                "Complete walkthrough",
                 "Match",
                 "PDF ingest",
                 "Advanced pipeline",
@@ -256,8 +256,8 @@ def main() -> None:
 
     if page == "How it works":
         tab_how_it_works()
-    elif page == "Tech stack & interviews":
-        tab_tech_stack_interviews()
+    elif page == "Complete walkthrough":
+        tab_complete_walkthrough()
     elif page == "Match":
         tab_match()
     elif page == "PDF ingest":

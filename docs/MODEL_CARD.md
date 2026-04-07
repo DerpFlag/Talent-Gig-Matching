@@ -1,5 +1,8 @@
 # Model Card: Talent-Gig Matcher
 
+> **Authoritative technical walkthrough** (architecture, training data, hyperparameters): [`COMPLETE_PROJECT_GUIDE.md`](COMPLETE_PROJECT_GUIDE.md).  
+> Keep this file as a **published-facing** summary for stakeholders.
+
 ## Model
 - Type: Siamese-style transformer ranking model
 - Framework: PyTorch

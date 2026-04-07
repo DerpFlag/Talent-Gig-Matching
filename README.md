@@ -14,6 +14,8 @@ license: mit
 
 Production-style local-first project to match candidate resumes to gig/job descriptions using NLP, embeddings, vector retrieval, and reranking.
 
+**Documentation:** Start with **[`docs/COMPLETE_PROJECT_GUIDE.md`](docs/COMPLETE_PROJECT_GUIDE.md)** — one technical source of truth (model, data, hyperparameters, full pipeline). Other files in `docs/` point there.
+
 **Hugging Face Space:** Streamlit is **not** a separate SDK on Spaces anymore. This repo uses **`sdk: docker`** and the root **`Dockerfile`** runs the Streamlit product app on port **7860**. On [Create new Space](https://huggingface.co/new-space) choose **Docker** (not Gradio), then import [the GitHub repo](https://github.com/DerpFlag/Talent-Gig-Matching). See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ## Phases
@@ -85,11 +87,12 @@ Response JSON:
   - API (local compose): `docker build -f Dockerfile.api -t talentgig-api .`
 
 ## Portfolio Artifacts
-- Model card: `docs/MODEL_CARD.md`
+- **Master guide (read this first):** `docs/COMPLETE_PROJECT_GUIDE.md`
+- Non-technical narrative: `docs/NON_TECH_PROJECT_GUIDE.md`
+- Deploy notes: `docs/DEPLOYMENT.md`
+- Tech stack + interview supplement: `docs/TECH_STACK_AND_LEARNING_GUIDE.md`
+- Model card (stakeholder-facing): `docs/MODEL_CARD.md`
 - Experiment template: `docs/EXPERIMENT_REPORT.md`
-- Non-technical project guide: `docs/NON_TECH_PROJECT_GUIDE.md`
-- Deploy notes (GitHub vs Hugging Face Spaces, SaaS reality check): `docs/DEPLOYMENT.md`
-- Tech stack + interview map (`requirements.txt` explained): `docs/TECH_STACK_AND_LEARNING_GUIDE.md`
 - Benchmark output: `data/artifacts/reports/benchmark.json`
 - One-click setup:
   - Windows: `powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1`

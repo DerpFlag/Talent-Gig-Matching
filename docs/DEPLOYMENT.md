@@ -1,5 +1,7 @@
 # Deployment: GitHub, free hosting, and what “real” SaaS adds
 
+> **System design, training, and model details** live in **[`COMPLETE_PROJECT_GUIDE.md`](COMPLETE_PROJECT_GUIDE.md)**. This file is **only** about hosting and platform limits.
+
 ## GitHub
 
 **GitHub stores code.** It does not run your FastAPI + Streamlit stack by itself. Typical flow:

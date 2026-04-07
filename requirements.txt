@@ -1,4 +1,4 @@
-# See docs/TECH_STACK_AND_LEARNING_GUIDE.md for what each dependency is for (showcase + interviews).
+# Dependency purposes: docs/COMPLETE_PROJECT_GUIDE.md §13–14 and docs/TECH_STACK_AND_LEARNING_GUIDE.md
 numpy
 pandas
 scikit-learn

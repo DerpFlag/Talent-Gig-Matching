@@ -1,6 +1,11 @@
 # Tech stack, libraries, and interview map
 
-This project is a **local-first, production-style** pipeline for matching résumés to job descriptions. It is **not** built with TensorFlow or Keras. The trainable matcher and much of the NLP stack use **PyTorch** and **Hugging Face** libraries.
+> **Complete end-to-end walkthrough** (data → labels → training → inference): **[`COMPLETE_PROJECT_GUIDE.md`](COMPLETE_PROJECT_GUIDE.md)**.  
+> Below is a **compact** library and interview supplement.
+
+---
+
+This project is a **local-first, production-style** pipeline for matching résumés to job descriptions. The trainable matcher and much of the NLP stack use **PyTorch** and **Hugging Face** libraries.
 
 Your two goals:
 
@@ -126,6 +131,7 @@ Your two goals:
 
 ## Related docs
 
+- **Master guide:** `docs/COMPLETE_PROJECT_GUIDE.md`
 - Non-technical narrative: `docs/NON_TECH_PROJECT_GUIDE.md`
 - Deploy story: `docs/DEPLOYMENT.md`
 - Model card template: `docs/MODEL_CARD.md`
