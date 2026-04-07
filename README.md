@@ -89,6 +89,7 @@ Response JSON:
 - Experiment template: `docs/EXPERIMENT_REPORT.md`
 - Non-technical project guide: `docs/NON_TECH_PROJECT_GUIDE.md`
 - Deploy notes (GitHub vs Hugging Face Spaces, SaaS reality check): `docs/DEPLOYMENT.md`
+- Tech stack + interview map (`requirements.txt` explained): `docs/TECH_STACK_AND_LEARNING_GUIDE.md`
 - Benchmark output: `data/artifacts/reports/benchmark.json`
 - One-click setup:
   - Windows: `powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1`

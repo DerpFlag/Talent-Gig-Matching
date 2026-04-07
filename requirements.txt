@@ -1,3 +1,4 @@
+# See docs/TECH_STACK_AND_LEARNING_GUIDE.md for what each dependency is for (showcase + interviews).
 numpy
 pandas
 scikit-learn
