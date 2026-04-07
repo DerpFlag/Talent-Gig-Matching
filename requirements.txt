@@ -13,7 +13,7 @@ fastapi
 uvicorn
 pydantic
 streamlit
-pytest
+pytest>=7.0.0
 requests
 pypdf
 python-multipart
