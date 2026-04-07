@@ -24,4 +24,4 @@ ENV HOME=/home/user \
 
 EXPOSE 7860
 
-CMD ["streamlit", "run", "src/ui/product_app.py", "--server.port", "7860", "--server.address", "0.0.0.0", "--server.headless", "true", "--browser.gatherUsageStats", "false", "--server.fileWatcherType", "none"]
+CMD ["streamlit", "run", "src/ui/product_app.py", "--server.port", "7860", "--server.address", "0.0.0.0", "--server.headless", "true", "--browser.gatherUsageStats", "false", "--server.fileWatcherType", "none", "--server.enableXsrfProtection", "false"]
