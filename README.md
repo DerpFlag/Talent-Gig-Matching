@@ -88,6 +88,7 @@ Response JSON:
 
 ## Portfolio Artifacts
 - **Master guide (read this first):** `docs/COMPLETE_PROJECT_GUIDE.md`
+- Presentation / demo script (talk track): `docs/PRESENTATION_SCRIPT.md`
 - Non-technical narrative: `docs/NON_TECH_PROJECT_GUIDE.md`
 - Deploy notes: `docs/DEPLOYMENT.md`
 - Tech stack + interview supplement: `docs/TECH_STACK_AND_LEARNING_GUIDE.md`

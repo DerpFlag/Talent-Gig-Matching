@@ -271,6 +271,7 @@ Use metrics to compare **retrieval-only** vs **retrieval + rerank** on held-out 
 | **`TECH_STACK_AND_LEARNING_GUIDE.md`** | Library-by-library interview notes + `requirements.txt` lines. | Interview prep quick scan (details duplicated here in §13 and data flow). |
 | **`MODEL_CARD.md`** | **Template** for model transparency (fill in for a release). | Compliance / portfolio “model card” expectations. |
 | **`EXPERIMENT_REPORT.md`** | **Template** for experiment logging. | When you run formal A/B or ablations. |
+| **`PRESENTATION_SCRIPT.md`** | Spoken demo / interview walkthrough (same style as a recorded talk track). | When you present live or record a walkthrough. |
 
 **Nothing in those files is “secret” knowledge missing from this guide**; they exist for **audience** (non-tech, ops, templates), not for splitting the technical truth.
 
